@@ -1,0 +1,10 @@
+how do we store blooming time ranges?
+	-array of 365 booleans was rejected
+	-we wanted the flexibility of blooming/unblooming at different times of day
+	-easier to represent as ranges of time (start time/end time pairs)
+
+why use the observer pattern?
+	-because we have an observer, and we have things to observe, basically
+
+how did we choose to represent trees?
+	-as an observable base class
