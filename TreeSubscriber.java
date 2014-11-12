@@ -1,8 +1,18 @@
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class TreeSubscriber {
 
-	TreeCollector collector;
+/**
+ * A class representing someone who is subscribed
+ * to a TreeCollector.
+ * 
+ * @author Filip de Figueiredo, Benji Weichman, Reese Wilkin. 
+ * @date November 12th, 2014
+ */
+public class TreeSubscriber  implements Observer{
+
+	private ArrayList<String> bloomingTrees;
 	
 	/**
 	 * TreeSubscriber constructor creates a new TreeSubscriber from a TreeCollector.
@@ -10,20 +20,26 @@ public class TreeSubscriber {
 	 * @param treeCollect TreeCollector object from which to create the TreeSubscriber.
 	 */
 	
-	TreeSubscriber(TreeCollector treeCollect){
-		collector = treeCollect;
+	TreeSubscriber(){
+		bloomingTrees = new ArrayList<String>();
 	}
 	
 	/**
 	 * Prints the names of the trees that are currently blooming.
 	 */
 	public void printBloomingTrees(){
-		collector.queryTrees();
-		ArrayList<String> blooming = collector.getBloomingTreeNames();
 		System.out.println("Currently blooming trees: ");
-		for(int i = 0 ; i < blooming.size() ; i++){
-			System.out.println(blooming.get(i));
+		for(int i = 0 ; i < bloomingTrees.size() ; i++){
+			System.out.println(bloomingTrees.get(i));
 		}	
+	}
+
+	
+	/** Updates the bloomingTrees known to this observer.
+	 */
+	public void update(Observable arg0, Object arg1) {
+		bloomingTrees = (ArrayList<String>) arg1;
+		
 	}
 
 }

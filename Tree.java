@@ -2,19 +2,18 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 /**
- * 
- * @author Benji and Group
- * @date November 10th, 2014
+ * A class representing a Tree that can flower within a Gregorian date.
+ * @author Filip de Figueiredo, Benji Weichman, Reese Wilkin. 
+ * @date November 12th, 2014
  */
-
 public class Tree {
 
 	/**
 	 * bloomRanges- a list of 2-tuples describing blooming periods of this tree
 	 * name-		the name of this tree
 	 */
-	ArrayList<GregorianCalendar[]> bloomRanges;
-	String name;
+	private ArrayList<GregorianCalendar[]> bloomRanges;
+	private String name;
 	
 	/**
 	 * Tree constructor, takes in a name and creates a new tree
@@ -23,6 +22,16 @@ public class Tree {
 	public Tree(String name){
 		this.name = name;
 		bloomRanges = new ArrayList<GregorianCalendar[]>();
+	}
+	
+	/**
+	 * Tree constructor, takes in a name and a range. Ceates a new tree with that range.
+	 * @param name- the new tree's name
+	 */
+	public Tree(String name,GregorianCalendar[] range){
+		this.name = name;
+		bloomRanges = new ArrayList<GregorianCalendar[]>();
+		bloomRanges.add(range);
 	}
 	
 	/**
