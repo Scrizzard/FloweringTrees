@@ -29,11 +29,8 @@ public class TreeSubscriber implements Observer{
 	/**
 	 * Prints the names of the trees that are currently blooming.
 	 */
-	public void printBloomingTrees(){
-		System.out.println(name + " knows these trees are blooming: ");
-		for(int i = 0 ; i < bloomingTrees.size() ; i++){
-			System.out.println(bloomingTrees.get(i));
-		}	
+	public ArrayList<String> getBloomingTrees(){
+		return bloomingTrees;
 	}
 
 	
