@@ -20,7 +20,7 @@ public class Tree {
 	 * @param name- the new tree's name
 	 */
 	public Tree(String name){
-		this.name = name;
+		setName(name);
 		bloomRanges = new ArrayList<GregorianCalendar[]>();
 	}
 	
@@ -29,7 +29,7 @@ public class Tree {
 	 * @param name- the new tree's name
 	 */
 	public Tree(String name, GregorianCalendar[] range){
-		this.name = name;
+		setName(name);
 		bloomRanges = new ArrayList<GregorianCalendar[]>();
 		addBloomRange(range);
 	}
@@ -39,10 +39,12 @@ public class Tree {
 	 * @param range- a 2-tuple of dates between which the tree blooms
 	 */
 	public void addBloomRange(GregorianCalendar[] range){
-		if(range.length != 2){
+		if(range == null || range.length != 2){
 			System.out.println("error in Tree#addBloomRange: new range must be a length 2 array");
-		}
-		else{
+	
+		}else if(range[0].compareTo(range[1]) > 0){
+			System.out.println("error in Tree#addBloomRange: earlier date must be first");
+		}else{
 			bloomRanges.add(range);
 		}
 	}
@@ -69,5 +71,17 @@ public class Tree {
 	 */
 	public String getName(){
 		return name;
+	}
+	
+	private void setName(String name){
+		
+		if(name != null && name.length() > 0){
+			this.name = name;
+		}
+		else{
+			System.out.println("warning: tree name should be non-null and non-empty");
+			System.out.println("         naming your tree 'unnamed tree'");
+			this.name = "unnamed tree";
+		}
 	}
 }

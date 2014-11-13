@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Observer;
 
-public class TestClass {
+public class DriverClass {
 
 	public static void main(String[] args){
 		ArrayList<Tree> trees = setUpTrees();
