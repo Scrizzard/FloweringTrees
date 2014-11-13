@@ -29,10 +29,12 @@ public class TreeSubscriber implements Observer{
 	/**
 	 * Prints the names of the trees that are currently blooming.
 	 */
-	public ArrayList<String> getBloomingTrees(){
-		return bloomingTrees;
+	public void printBloomingTrees(){
+		System.out.println(name + " knows these trees are blooming: ");
+		for(int i = 0 ; i < bloomingTrees.size() ; i++){
+			System.out.println("  " + bloomingTrees.get(i));
+		}	
 	}
-
 	
 	/** Updates the bloomingTrees known to this observer.
 	 */
@@ -40,4 +42,11 @@ public class TreeSubscriber implements Observer{
 		this.bloomingTrees = (ArrayList<String>) bloomingTrees;
 	}
 
+	/**
+	 * accessor for the list of currently blooming tree names
+	 * @return list of names of blooming trees
+	 */
+	public ArrayList<String> getBloomingTrees(){
+		return bloomingTrees;
+	}
 }
