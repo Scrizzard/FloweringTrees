@@ -10,7 +10,7 @@ import java.util.Observer;
  * @author Filip de Figueiredo, Benji Weichman, Reese Wilkin. 
  * @date November 12th, 2014
  */
-public class TreeSubscriber  implements Observer{
+public class TreeSubscriber implements Observer{
 
 	private ArrayList<String> bloomingTrees;
 	
@@ -20,7 +20,7 @@ public class TreeSubscriber  implements Observer{
 	 * @param treeCollect TreeCollector object from which to create the TreeSubscriber.
 	 */
 	
-	TreeSubscriber(){
+	public TreeSubscriber(Observable treeCollector){
 		bloomingTrees = new ArrayList<String>();
 	}
 	
@@ -37,8 +37,8 @@ public class TreeSubscriber  implements Observer{
 	
 	/** Updates the bloomingTrees known to this observer.
 	 */
-	public void update(Observable arg0, Object arg1) {
-		bloomingTrees = (ArrayList<String>) arg1;
+	public void update(Observable self, Object bloomingTrees) {
+		this.bloomingTrees = (ArrayList<String>) bloomingTrees;
 		
 	}
 
