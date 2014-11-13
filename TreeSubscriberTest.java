@@ -36,7 +36,12 @@ public class TreeSubscriberTest {
 	 */
 	@Test
 	public void testPrintBloomingTrees() {
-		tester.printBloomingTrees();
+		try{
+			tester.printBloomingTrees();
+		}
+		catch (NullPointerException e){
+			fail("Attempted to print null");
+		}
 	}
 
 	/**
