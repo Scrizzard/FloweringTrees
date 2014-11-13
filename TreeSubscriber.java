@@ -49,4 +49,8 @@ public class TreeSubscriber implements Observer{
 	public ArrayList<String> getBloomingTrees(){
 		return bloomingNames;
 	}
+	
+	public String getName(){
+		return name;
+	}
 }

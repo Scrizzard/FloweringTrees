@@ -20,6 +20,9 @@ public class TreeCollector extends Observable{
 		bloomingNames = new ArrayList<String>();
 	}
 	
+	/**
+	 * If any blooming changes have occurred among the observed trees, notify all subscribers
+	 */
 	public void queryTrees() {
 		ArrayList<String> oldBlooming = new ArrayList<String>(bloomingNames);
 		bloomingNames.clear();
