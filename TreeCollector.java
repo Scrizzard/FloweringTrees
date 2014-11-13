@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 /**
- * A Class that checks a list of trees to see if they are in bloom. 
+ * Observable class that holds a list of trees and checks if they are in bloom. 
  * Updates its observers about bloom changes.
  * 
  * @author Filip de Figueiredo, Benji Weichman, Reese Wilkin. 
@@ -20,14 +20,18 @@ public class TreeCollector extends Observable{
 	 */
 	public void queryTrees() {
 		bloomingTrees.clear();
-		for(Tree q : observedTrees){
-			if(q.isFlowering()){
-				bloomingTrees.add(q.getName());
+		for(Tree tree : observedTrees){
+			if(tree.isFlowering()){
+				bloomingTrees.add(tree.getName());
 			}
 		}
+		//Benji: I don't like that it notifies 
+		//the observers even if nothing has changed
 		setChanged();
-		this.notifyObservers(bloomingTrees);
+		notifyObservers(bloomingTrees);
+		clearChanged();
 	}
+	
 	/**
 	 * Returns the currently blooming trees known by this collector.
 	 * @return list of currently blooming trees.
@@ -35,6 +39,7 @@ public class TreeCollector extends Observable{
 	public ArrayList<String> getBloomingTreeNames() {
 		return bloomingTrees;
 	}
+	
 	/**
 	 * Add the input tree to the observedTree list
 	 * @param newTree to be added to the list.
@@ -42,6 +47,7 @@ public class TreeCollector extends Observable{
 	public void addTree(Tree newTree){
 		observedTrees.add(newTree);
 	}
+	
 	/**
 	 * Removes the input tree from the observedTree list.
 	 * @param oldTree to be removed from the list

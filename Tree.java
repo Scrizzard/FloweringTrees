@@ -25,13 +25,13 @@ public class Tree {
 	}
 	
 	/**
-	 * Tree constructor, takes in a name and a range. Ceates a new tree with that range.
+	 * Tree constructor, takes in a name and a range. Creates a new tree with that range.
 	 * @param name- the new tree's name
 	 */
-	public Tree(String name,GregorianCalendar[] range){
+	public Tree(String name, GregorianCalendar[] range){
 		this.name = name;
 		bloomRanges = new ArrayList<GregorianCalendar[]>();
-		bloomRanges.add(range);
+		addBloomRange(range);
 	}
 	
 	/**
