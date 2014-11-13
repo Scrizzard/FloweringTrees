@@ -26,18 +26,12 @@ public class TreeCollector extends Observable{
 				bloomingTrees.add(tree.getName());
 			}
 		}
-<<<<<<< HEAD
 		if(!bloomingTrees.equals(oldBlooming)){
 			setChanged();
 			this.notifyObservers(bloomingTrees);
+			clearChanged();;
 		}
-=======
-		//Benji: I don't like that it notifies 
-		//the observers even if nothing has changed
-		setChanged();
-		notifyObservers(bloomingTrees);
-		clearChanged();
->>>>>>> origin/master
+		
 	}
 	
 	/**
