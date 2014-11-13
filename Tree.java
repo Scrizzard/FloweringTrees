@@ -70,16 +70,4 @@ public class Tree {
 	public String getName(){
 		return name;
 	}
-	
-	//test method
-	public static void main(String[] args){
-		Tree tree = new Tree("dogwood");
-		
-		GregorianCalendar[] range = new GregorianCalendar[2];
-		range[0] = new GregorianCalendar(2000, GregorianCalendar.MAY, 17);
-		range[1] = new GregorianCalendar(2050, GregorianCalendar.MAY, 17);
-
-		tree.addBloomRange(range);
-		System.out.println(tree.isFlowering());
-	}
 }

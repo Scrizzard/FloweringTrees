@@ -12,7 +12,7 @@ import java.util.Observer;
  */
 public class TreeSubscriber implements Observer{
 
-	private ArrayList<String> bloomingTrees;
+	private ArrayList<String> bloomingNames;
 	private String name;
 	
 	/**
@@ -22,7 +22,7 @@ public class TreeSubscriber implements Observer{
 	 */
 	
 	public TreeSubscriber(String name){
-		bloomingTrees = new ArrayList<String>();
+		bloomingNames = new ArrayList<String>();
 		this.name = name;
 	}
 	
@@ -31,15 +31,15 @@ public class TreeSubscriber implements Observer{
 	 */
 	public void printBloomingTrees(){
 		System.out.println(name + " knows these trees are blooming: ");
-		for(int i = 0 ; i < bloomingTrees.size() ; i++){
-			System.out.println("  " + bloomingTrees.get(i));
+		for(int i = 0 ; i < bloomingNames.size() ; i++){
+			System.out.println("  " + bloomingNames.get(i));
 		}	
 	}
 	
 	/** Updates the bloomingTrees known to this observer.
 	 */
 	public void update(Observable self, Object bloomingTrees) {
-		this.bloomingTrees = (ArrayList<String>) bloomingTrees;
+		this.bloomingNames = (ArrayList<String>) bloomingTrees;
 	}
 
 	/**
@@ -47,6 +47,6 @@ public class TreeSubscriber implements Observer{
 	 * @return list of names of blooming trees
 	 */
 	public ArrayList<String> getBloomingTrees(){
-		return bloomingTrees;
+		return bloomingNames;
 	}
 }

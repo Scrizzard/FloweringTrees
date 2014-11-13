@@ -10,28 +10,28 @@ import java.util.Observable;
  */
 public class TreeCollector extends Observable{
 	private ArrayList<Tree> observedTrees;
-	private ArrayList<String> bloomingTrees;
+	private ArrayList<String> bloomingNames;
 	
 	/**
 	 * Construct a new TreeCollector
 	 */
 	public TreeCollector(){
 		observedTrees = new ArrayList<Tree>();
-		bloomingTrees = new ArrayList<String>();
+		bloomingNames = new ArrayList<String>();
 	}
 	
 	public void queryTrees() {
-		ArrayList<String> oldBlooming = new ArrayList<String>(bloomingTrees);
-		bloomingTrees.clear();
+		ArrayList<String> oldBlooming = new ArrayList<String>(bloomingNames);
+		bloomingNames.clear();
 		for(Tree tree : observedTrees){
 			if(tree.isFlowering()){
-				bloomingTrees.add(tree.getName());
+				bloomingNames.add(tree.getName());
 			}
 		}
 		
-		if(!bloomingTrees.equals(oldBlooming)){
+		if(!bloomingNames.equals(oldBlooming)){
 			setChanged();
-			this.notifyObservers(bloomingTrees);
+			notifyObservers(bloomingNames);
 			clearChanged();
 		}
 	}
@@ -40,8 +40,8 @@ public class TreeCollector extends Observable{
 	 * Returns the currently blooming trees known by this collector.
 	 * @return list of currently blooming trees.
 	 */
-	public ArrayList<String> getBloomingTreeNames() {
-		return bloomingTrees;
+	public ArrayList<String> getBloomingNames() {
+		return bloomingNames;
 	}
 	
 	/**
