@@ -11,7 +11,7 @@ import java.util.Observable;
 public class TreeCollector extends Observable{
 	private ArrayList<Tree> observedTrees;
 	private ArrayList<String> bloomingTrees;
-	
+
 	/**
 	 * Checks to see which trees are in bloom.
 	 * Updates the bloomingTrees list, and 
@@ -19,14 +19,17 @@ public class TreeCollector extends Observable{
 	 * bloom list.
 	 */
 	public void queryTrees() {
+		ArrayList<String> oldBlooming = new ArrayList<String>(bloomingTrees);
 		bloomingTrees.clear();
 		for(Tree q : observedTrees){
 			if(q.isFlowering()){
 				bloomingTrees.add(q.getName());
 			}
 		}
-		setChanged();
-		this.notifyObservers(bloomingTrees);
+		if(!bloomingTrees.equals(oldBlooming)){
+			setChanged();
+			this.notifyObservers(bloomingTrees);
+		}
 	}
 	/**
 	 * Returns the currently blooming trees known by this collector.
